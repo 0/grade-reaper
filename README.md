@@ -27,4 +27,4 @@ Prompts for everything necessary to obtain some grades, and then displays said g
 
 `./grades.py --username a99bcdef --term 2 --loop --bell`
 
-Prompts for the password, and then loops forever, occasionally updating the term 2 grades, with an ASCII bell whenever anything interesting happens.
+Prompts for the password, and then loops, occasionally updating the term '2' grades, with an ASCII bell whenever anything interesting happens. Terminates when all grades become available.

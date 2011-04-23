@@ -50,7 +50,9 @@ parser.add_argument('--username', help='Quest username')
 parser.add_argument('--password', help='Quest password')
 parser.add_argument('--term', help='Quest term ID')
 parser.add_argument('--loop', action='store_true',
-		help='poll for updates regularly until killed')
+		help='poll for updates regularly until all grades are available')
+parser.add_argument('--continue-when-done', action='store_true',
+		help='continue polling even when all grades have become available')
 parser.add_argument('--bell', action='store_true',
 		help='print the ASCII bell character when something happens')
 args = parser.parse_args()
@@ -97,7 +99,7 @@ try:
 	courses, grades = obtain_grades(qs, term, args.bell)
 
 	if args.loop:
-		while True:
+		while args.continue_when_done or '' in grades:
 			time.sleep(POLL_INTERVAL)
 
 			courses, grades = obtain_grades(qs, term, args.bell,
