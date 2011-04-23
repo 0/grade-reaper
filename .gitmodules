@@ -1,0 +1,3 @@
+[submodule "quest"]
+	path = quest
+	url = git://github.com/0/scrape-quest.git
