@@ -3,6 +3,7 @@
 import getpass
 import prettytable
 from quest import scraper
+import sys
 
 # Optional configuration. If not set, obtained interactively.
 username = None # 'a99bcdef'
@@ -33,7 +34,13 @@ if not password:
 
 # Go!
 qs = scraper.QuestScraper()
-qs.login(username, password)
+
+try:
+	qs.login(username, password)
+except scraper.LoginError as e:
+	print e.message
+	sys.exit(1)
+
 courses, grades = qs.fetch_grades('2')
 
 make_table(courses, grades).printt(header=False, border=False)
