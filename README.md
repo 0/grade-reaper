@@ -7,7 +7,7 @@ UWaterloo student, want to see what you [failed](http://ugradcalendar.uwaterloo.
 ### Dependencies
 
 * [prettytable](http://code.google.com/p/prettytable/): `pip install prettytable`
-* [scrape-quest](https://github.com/0/scrape-quest): `git submodule update --init`
+* [scrape-quest](https://github.com/0/scrape-quest): `git submodule update --init` (NB. It has its own dependencies.)
 
 ### Configuration
 
