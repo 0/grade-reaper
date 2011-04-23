@@ -10,14 +10,6 @@ username = None # 'a99bcdef'
 password = None # '!@#$%^&*'
 term = None # '2'
 
-def make_table(courses, grades):
-	pt = prettytable.PrettyTable(['Course', 'Grade'])
-
-	for course, grade in zip(courses, grades):
-		pt.add_row([course, grade])
-
-	return pt
-
 # Get any missing credentials.
 if not username:
 	username = raw_input('Quest username: ')
@@ -38,14 +30,15 @@ if not term:
 	term_ids, terms = qs.fetch_grade_terms()
 
 	pt = prettytable.PrettyTable(['Id', 'Term'])
-
 	for term_id, term in zip(term_ids, terms):
 		pt.add_row([term_id, term])
-
 	pt.printt(border=False)
 
 	term = raw_input('Choose a term: ')
 
 courses, grades = qs.fetch_grades(term)
 
-make_table(courses, grades).printt(header=False, border=False)
+pt = prettytable.PrettyTable(['Course', 'Grade'])
+for course, grade in zip(courses, grades):
+	pt.add_row([course, grade])
+pt.printt(header=False, border=False)
