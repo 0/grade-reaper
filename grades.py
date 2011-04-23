@@ -12,12 +12,13 @@ username = None # 'a99bcdef'
 password = None # '!@#$%^&*'
 term = None # '2'
 
-POLL_INTERVAL = 10 * 60 # seconds
+POLL_INTERVAL = 60 * 60 # seconds
 
 def event(bell):
 	"""
 	Print a newline with an optional bell.
 	"""
+
 	if bell:
 		print '\x07'
 	else:
@@ -27,6 +28,7 @@ def obtain_grades(qs, term, bell, old_courses=None, old_grades=None):
 	"""
 	Get and output the grades for the given term.
 	"""
+
 	courses, grades = qs.fetch_grades(term)
 
 	# If supplied with old information, only print new information if it
@@ -91,11 +93,14 @@ if not term:
 
 	term = raw_input('Choose a term: ')
 
-courses, grades = obtain_grades(qs, term, args.bell)
+try:
+	courses, grades = obtain_grades(qs, term, args.bell)
 
-if args.loop:
-	while True:
-		time.sleep(POLL_INTERVAL)
+	if args.loop:
+		while True:
+			time.sleep(POLL_INTERVAL)
 
-		courses, grades = obtain_grades(qs, term, args.bell,
-				old_courses=courses, old_grades=grades)
+			courses, grades = obtain_grades(qs, term, args.bell,
+					old_courses=courses, old_grades=grades)
+finally:
+	event(args.bell)
