@@ -9,19 +9,11 @@ import sys
 username = None # 'a99bcdef'
 password = None # '!@#$%^&*'
 
-def parse_grade(grade):
-	"""Suppress all non-integer values."""
-	try:
-		int(grade)
-		return grade
-	except ValueError:
-		return ''
-
 def make_table(courses, grades):
 	pt = prettytable.PrettyTable(["Course", "Grade"])
 
 	for course, grade in zip(courses, grades):
-		pt.add_row([course, parse_grade(grade)])
+		pt.add_row([course, grade])
 
 	return pt
 
