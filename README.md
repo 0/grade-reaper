@@ -4,7 +4,10 @@ UWaterloo student, want to see what you [failed](http://ugradcalendar.uwaterloo.
 
 ## Setup
 
-1. `git submodule update --init`
+### Dependencies
+
+* [prettytable](http://code.google.com/p/prettytable/): `pip install prettytable`
+* [scrape-quest](https://github.com/0/scrape-quest): `git submodule update --init`
 
 ### Configuration
 
