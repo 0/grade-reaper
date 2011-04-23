@@ -25,7 +25,7 @@ if not password:
 	password = getpass.getpass('Password for %s: ' % (username))
 
 # Go!
-qs = scraper.QuestScraper()
+qs = scraper.QuestScraper(auto_authenticate=True)
 
 try:
 	qs.login(username, password)
