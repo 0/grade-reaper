@@ -2,6 +2,7 @@
 
 import argparse
 import getpass
+import logging
 import prettytable
 from quest import scraper
 import sys
@@ -72,6 +73,20 @@ if not username:
 
 if not password:
 	password = getpass.getpass('Password for %s: ' % (username))
+
+# Set up logging output.
+log_levels = {
+	'mechanize': logging.INFO,
+	'quest.scraper': logging.INFO,
+}
+log_handler = logging.StreamHandler()
+log_format = '%(asctime)s %(name)s %(levelname)s: %(message)s'
+log_handler.setFormatter(logging.Formatter(log_format))
+
+for (module, level) in log_levels.iteritems():
+	logger = logging.getLogger(module)
+	logger.addHandler(log_handler)
+	logger.setLevel(level)
 
 # Go!
 qs = scraper.QuestScraper(auto_authenticate=True)
