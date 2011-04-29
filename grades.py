@@ -81,6 +81,8 @@ log_levels = {
 }
 log_handler = logging.StreamHandler()
 log_format = '%(asctime)s %(name)s %(levelname)s: %(message)s'
+if args.bell:
+	log_format = '\a' + log_format
 log_handler.setFormatter(logging.Formatter(log_format))
 
 for (module, level) in log_levels.iteritems():
