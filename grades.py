@@ -75,9 +75,10 @@ if not password:
 	password = getpass.getpass('Password for %s: ' % (username))
 
 # Set up logging output.
+log_default_level = logging.WARNING
 log_levels = {
-	'mechanize': logging.INFO,
-	'quest.scraper': logging.INFO,
+	'mechanize': log_default_level,
+	'quest.scraper': log_default_level,
 }
 log_handler = logging.StreamHandler()
 log_format = '%(asctime)s %(name)s %(levelname)s: %(message)s'
