@@ -21,7 +21,7 @@ def event(bell):
 	"""
 
 	if bell:
-		print '\x07'
+		print '\a'
 	else:
 		print # Only spacing.
 
