@@ -41,7 +41,10 @@ def obtain_grades(qs, term, bell, old_courses=None, old_grades=None):
 		pt = prettytable.PrettyTable(['Course', 'Grade'])
 		for course, grade in zip(courses, grades):
 			pt.add_row([course, grade])
-		pt.printt(header=False, border=False)
+
+		pt.border = False
+		pt.header = False
+		print pt
 
 	return courses, grades
 
@@ -109,7 +112,9 @@ if not term:
 	pt = prettytable.PrettyTable(['Id', 'Term'])
 	for term_id, term in zip(term_ids, terms):
 		pt.add_row([term_id, term])
-	pt.printt(border=False)
+
+	pt.border = False
+	print pt
 
 	term = raw_input('Choose a term: ')
 
